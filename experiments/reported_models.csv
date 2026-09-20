@@ -1,0 +1,31 @@
+technique,papers_mentioning,papers_endorsing,endorsement_rate
+Gherkin,73,12,0.164
+Ontology / OWL,24,9,0.375
+Cucumber,97,7,0.072
+State machine,32,3,0.094
+FitNesse,12,3,0.25
+JBehave,44,2,0.045
+UML,43,2,0.047
+JUnit,33,1,0.03
+Model-driven engineering,28,1,0.036
+SpecFlow,20,1,0.05
+LDA (topic model),5,1,0.2
+Robot Framework,3,1,0.333
+word2vec / GloVe,2,1,0.5
+Selenium,14,0,0.0
+Behat,8,0,0.0
+TF-IDF,5,0,0.0
+Stanford / CoreNLP,5,0,0.0
+WordNet,5,0,0.0
+POS tagging,4,0,0.0
+SVM,3,0,0.0
+Naive Bayes,2,0,0.0
+Random Forest,1,0,0.0
+Decision Tree,1,0,0.0
+k-NN,1,0,0.0
+Logistic Regression,1,0,0.0
+BERT,1,0,0.0
+Transformer,1,0,0.0
+spaCy,1,0,0.0
+NLTK,1,0,0.0
+Petri net,1,0,0.0

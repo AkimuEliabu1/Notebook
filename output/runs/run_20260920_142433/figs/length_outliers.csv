@@ -1,0 +1,11 @@
+paper_id,source_file,word_count,n_sections,abstract_strategy,length_flag
+P0007,A Multi-Case Study of Agile Requirements Engineering and the Use of Test Cases as Requirements.pdf,17624,6,pre_intro,too long
+P0012,A User_Centered Behavioral Software Development Model.pdf,16778,5,heading,too long
+P0015,Adapting Behavior Driven Development (BDD) for large-scale software systems.pdf,18966,6,pre_intro,too long
+P0016,Agile Processes in Software Engineering and Extreme Programming.pdf,120392,5,heading,too long
+P0023,Automated Acceptance Tests as Software Requirements-An Experiment to Compare the Applicability of Fit Tables and Gherkin Language.pdf,120392,5,heading,too long
+P0053,Characterising the Quality of Behaviour Driven Development Specifications.pdf,103259,4,heading,too long
+P0070,Executable requirements in a safety-critical context with Ada.pdf,48186,0,heading,too long
+P0078,Implementing behavior driven development in an open source ERP.pdf,116264,4,heading,too long
+P0102,"ScrumOntoBDD- Agile software development based on scrum, ontologies and behaviour-driven development.pdf",16669,4,heading,too long
+P0124,Using acceptance tests to predict files changed by programming tasks.pdf,19222,5,pre_intro,too long

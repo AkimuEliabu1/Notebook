@@ -1,0 +1,7 @@
+class,precision,recall,f1,support
+Evaluation Research,0.4,0.2857,0.3333,14
+Experience Papers,0.5556,0.3333,0.4167,15
+Opinion Papers,0.25,0.2222,0.2353,18
+Philosophical Papers,0.6129,0.7917,0.6909,24
+Solution Proposal,0.75,0.6818,0.7143,22
+Validation Research,0.6216,0.7667,0.6866,30

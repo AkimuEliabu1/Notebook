@@ -1,0 +1,18 @@
+CLUSTER AGREEMENT - clusters vs evaluation_method
+clusters matched one-to-one to classes by maximum overlap
+ARI 0.0460   NMI 0.0629
+mapping: {np.int64(0): 'Case Study', np.int64(1): 'Discussion'}
+======================================================================
+                   precision    recall  f1-score   support
+
+       Case Study      0.329     0.889     0.480        27
+       Discussion      0.300     0.625     0.405        24
+          Example      0.000     0.000     0.000        19
+Experience Report      0.000     0.000     0.000        22
+       Experiment      0.000     0.000     0.000        12
+Rigorous Analysis      0.000     0.000     0.000        19
+
+         accuracy                          0.317       123
+        macro avg      0.105     0.252     0.148       123
+     weighted avg      0.131     0.317     0.184       123
+

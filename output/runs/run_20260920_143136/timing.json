@@ -1,0 +1,9 @@
+{
+  "automated_min_per_study": 0.006,
+  "manual_single_min": 107.0,
+  "manual_dual_min": 172.0,
+  "reduction_vs_single_pct": 100.0,
+  "meets_50pct_target": true,
+  "total_seconds": 46.4,
+  "n_studies": 123
+}

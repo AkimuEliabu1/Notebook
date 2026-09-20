@@ -1,0 +1,18 @@
+CLUSTER AGREEMENT - clusters vs research_type
+clusters matched one-to-one to classes by maximum overlap
+ARI 0.0136   NMI 0.0525
+mapping: {np.int64(0): 'Solution Proposal', np.int64(1): 'Validation Research'}
+======================================================================
+                      precision    recall  f1-score   support
+
+ Evaluation Research      0.000     0.000     0.000        14
+   Experience Papers      0.000     0.000     0.000        15
+      Opinion Papers      0.000     0.000     0.000        18
+Philosophical Papers      0.000     0.000     0.000        24
+   Solution Proposal      0.192     0.636     0.295        22
+ Validation Research      0.360     0.600     0.450        30
+
+            accuracy                          0.260       123
+           macro avg      0.092     0.206     0.124       123
+        weighted avg      0.122     0.260     0.162       123
+

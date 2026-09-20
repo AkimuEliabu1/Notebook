@@ -1,0 +1,20 @@
+{
+  "kmeans_baseline": {
+    "n_groups": 2,
+    "sizes": {
+      "0": 73,
+      "1": 50
+    }
+  },
+  "bertopic_primary": {
+    "n_themes": 2,
+    "outliers": 30,
+    "outlier_pct": 24.4,
+    "sizes": {
+      "-1": 30,
+      "0": 54,
+      "1": 39
+    }
+  },
+  "agreement_ARI": 0.1315
+}

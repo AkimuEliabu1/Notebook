@@ -1,0 +1,10 @@
+,precision,recall,f1-score,support
+Case Study,0.4,0.8148,0.5366,27.0
+Discussion,0.3824,0.5417,0.4483,24.0
+Example,0.3,0.1579,0.2069,19.0
+Experience Report,0.4,0.1818,0.25,22.0
+Experiment,0.0,0.0,0.0,12.0
+Rigorous Analysis,0.3571,0.2632,0.303,19.0
+accuracy,0.3821,0.3821,0.3821,0.3821
+macro avg,0.3066,0.3266,0.2908,123.0
+weighted avg,0.3355,0.3821,0.3287,123.0

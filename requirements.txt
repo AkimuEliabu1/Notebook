@@ -1,0 +1,49 @@
+# ---------------------------------------------------------------------------
+# sms_pipeline.ipynb - Python dependencies
+#
+#   python3 -m venv venv
+#   ./venv/bin/pip install -r requirements.txt
+#
+# Versions are pinned to those the reported results were produced with.
+# Drop the "==" pins to install current releases instead.
+#
+# NOT installable with pip: the Tesseract OCR engine. It is a system program,
+# and the `tesseract` package on PyPI is an unrelated astronomy library. Only
+# scanned PDFs with no text layer need it:
+#   sudo apt-get install -y tesseract-ocr
+# ---------------------------------------------------------------------------
+
+# --- PDF reading -----------------------------------------------------------
+pymupdf==1.28.2
+pytesseract==0.3.13          # wrapper only; needs the system engine above
+pillow==12.3.0
+
+# --- data handling ---------------------------------------------------------
+pandas==3.0.6
+numpy==2.5.3
+scipy==1.18.1                # Hungarian matching in the cluster-agreement report
+tqdm==4.70.1
+joblib==1.6.0
+
+# --- embeddings and topic modelling ----------------------------------------
+sentence-transformers==6.1.0
+bertopic==0.17.4
+umap-learn==0.5.12
+hdbscan==0.8.44
+gensim==4.4.0                # C_v topic coherence
+spacy==3.8.16                # optional; the pipeline runs without it
+
+# --- machine learning ------------------------------------------------------
+scikit-learn==1.9.1
+
+# --- plotting --------------------------------------------------------------
+matplotlib==3.11.2
+seaborn==0.13.2
+
+# --- running the notebook --------------------------------------------------
+ipykernel==7.3.0
+nbconvert==7.17.1            # only needed to execute the notebook headlessly
+jupyter-client==8.10.0
+
+# --- development (optional) ------------------------------------------------
+# ruff==0.16.8               # linting and formatting

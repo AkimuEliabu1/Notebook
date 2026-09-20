@@ -1,0 +1,35 @@
+# --- environment -----------------------------------------------------------
+venv/
+.ipynb_checkpoints/
+.ruff_cache/
+__pycache__/
+*.pyc
+
+# --- primary studies -------------------------------------------------------
+# The corpus is 126 published papers from IEEE, ACM, Springer and Elsevier.
+# They are not ours to redistribute, so neither the PDFs nor the full text
+# extracted from them belongs in this repository. Supply your own PDFs in
+# pdfs/ and run Part A of the notebook to rebuild the dataset.
+pdfs/
+output/dataset.csv
+output/**/sms_results.csv
+
+# --- large model artefacts -------------------------------------------------
+# Rebuilt in under a minute by Part B; 88 MB each and immutable in git history.
+output/**/bertopic_model/
+output/**/sms_model.pkl
+*.npy
+
+# --- dissertation ----------------------------------------------------------
+# Unpublished work, including a supervisor's review comments.
+Dessertatin/
+
+# --- local scratch ---------------------------------------------------------
+install.sh
+new.py
+ruff.toml
+requirements.txt.old
+sms_run.ipynb
+sms_executed.ipynb
+sms_pipeline_MASTER.ipynb
+*.pdf
