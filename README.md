@@ -26,7 +26,9 @@ representations, clusters with k-means and HDBSCAN, assigns the facets, models
 themes with BERTopic, tunes hyperparameters by grid search, and writes the
 figures and evaluation reports.
 
-## Running it
+## Running it locally
+
+Docker is the recommended route and is covered below. To run without it:
 
 ```bash
 python3 -m venv venv
@@ -46,7 +48,122 @@ sudo apt-get install -y tesseract-ocr
 ```
 
 Note that the `tesseract` package on PyPI is an unrelated astronomy library, not
-the OCR engine.
+the OCR engine. The Docker image includes the real one, which is one reason to
+prefer it.
+
+## Running with Docker, step by step
+
+Docker is the recommended way to run this. It supplies the Tesseract OCR engine,
+which pip cannot install, and it carries the sentence-transformer weights, so
+the pipeline works offline and gives the same answers on any machine.
+
+### 1. Check Docker is installed
+
+```bash
+docker --version
+docker compose version
+```
+
+If either is missing, install Docker Engine and the Compose plugin:
+
+```bash
+sudo apt-get update && sudo apt-get install -y docker.io docker-compose-v2
+sudo usermod -aG docker "$USER"      # then log out and back in
+```
+
+### 2. Get the code
+
+```bash
+git clone https://github.com/AkimuEliabu1/Notebook.git
+cd Notebook
+```
+
+### 3. Add your papers
+
+The corpus is not distributed with this repository. Put your own PDFs in
+`pdfs/`, one file per primary study:
+
+```bash
+mkdir -p pdfs output
+cp /path/to/your/papers/*.pdf pdfs/
+ls pdfs/*.pdf | wc -l
+```
+
+### 4. Build the image
+
+```bash
+docker compose build
+```
+
+This takes ten to twenty minutes the first time and needs roughly 6 GB of free
+disk. It downloads PyTorch, which is large, and then bakes the
+sentence-transformer weights into the image. Later builds reuse the cached
+layers and finish in seconds unless `requirements.txt` changes.
+
+Check the free space first, because the build fails confusingly when the disk
+is full:
+
+```bash
+df -h /
+```
+
+### 5. Run the pipeline
+
+```bash
+docker compose run --rm pipeline
+```
+
+The notebook executes end to end: it reads the PDFs, builds the dataset, then
+clusters, assigns the facets, models the themes and writes the figures. Expect
+roughly a minute of modelling for about 120 papers, plus the time to read the
+PDFs.
+
+### 6. Collect the results
+
+Everything is written to `output/` on the host, not inside the container:
+
+```
+output/dataset.csv          the corpus: one row per paper, full text included
+output/runs/run_<stamp>/    this run's tables, figures and evaluation reports
+output/latest               a symlink to the most recent run
+```
+
+A new run never overwrites an old one, so runs can be compared.
+
+### 7. Work in the notebook instead
+
+To edit and run cells interactively rather than executing the whole notebook:
+
+```bash
+docker compose up notebook
+```
+
+Then open <http://127.0.0.1:8888> in a browser. The server is bound to localhost
+only, because it runs without a token; do not publish the port to a network.
+Stop it with Ctrl-C.
+
+### Other commands
+
+```bash
+docker compose run --rm pipeline shell     # a shell inside the container
+docker compose build --no-cache            # rebuild from scratch
+docker compose down -v                     # remove containers and the model cache
+```
+
+### If something goes wrong
+
+**The build runs out of space.** `docker system df` shows what Docker is
+holding; `docker image prune -a` reclaims images nothing is using.
+
+**Scanned PDFs are skipped.** Documents with no text layer need OCR. The image
+already contains Tesseract, so this should not happen inside Docker; if it does,
+the PDF is likely damaged rather than merely scanned.
+
+**Permission errors on `output/`.** The container runs as uid 1000. If your host
+user differs, `sudo chown -R $(id -u):$(id -g) output/` after the run.
+
+**The first run is slow.** The sentence-transformer weights are in the image,
+but BERTopic still fits from scratch on every run. That is expected.
 
 ## What is not in this repository
 
