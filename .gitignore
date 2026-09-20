@@ -33,3 +33,11 @@ sms_run.ipynb
 sms_executed.ipynb
 sms_pipeline_MASTER.ipynb
 *.pdf
+
+# --- run outputs -----------------------------------------------------------
+# Every execution writes a fresh output/runs/run_<stamp>/ folder. Committing
+# all of them accumulates near-identical figures, so only the most recent is
+# tracked. Re-point this line after a run you want to keep.
+output/runs/*
+!output/runs/run_20260920_171507/
+output/latest

@@ -1,7 +1,0 @@
-class,precision,recall,f1,support
-Case Study,0.5161,0.5926,0.5517,27
-Discussion,0.5833,0.5833,0.5833,24
-Example,0.4118,0.3684,0.3889,19
-Experience Report,0.4286,0.4091,0.4186,22
-Experiment,0.5455,0.5,0.5217,12
-Rigorous Analysis,0.4737,0.4737,0.4737,19

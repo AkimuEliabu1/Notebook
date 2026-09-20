@@ -1,7 +1,0 @@
-class,precision,recall,f1,support
-Empirical Insights,0.7,0.3889,0.5,18
-Method,0.4545,0.4348,0.4444,23
-Metric,0.4167,0.4762,0.4444,21
-Model,0.5714,0.5333,0.5517,15
-Process,0.3333,0.35,0.3415,20
-Tool,0.5625,0.6923,0.6207,26

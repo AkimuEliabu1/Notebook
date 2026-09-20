@@ -1,5 +1,0 @@
-representation,dims,silhouette,davies_bouldin,coherence_cv,score
-Bag of words (1-2 grams),2534,0.0223,4.5251,0.4461,0.7687
-Sentence-BERT (all-MiniLM-L6-v2),384,0.0352,3.3862,0.395,0.55
-TF-IDF,1388,0.0062,6.3972,0.4345,0.3478
-TF-IDF + LSA 100,100,0.0087,5.9336,0.422,0.2987
