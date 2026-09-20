@@ -1,0 +1,26 @@
+services:
+  pipeline:
+    build: .
+    image: sms-pipeline
+    volumes:
+      # The corpus stays on the host; the image never contains it.
+      - ./pdfs:/work/pdfs:ro
+      - ./output:/work/output
+      # Persist the model cache so a rebuild does not re-download it.
+      - hf-cache:/work/.cache/huggingface
+    command: run
+
+  notebook:
+    build: .
+    image: sms-pipeline
+    volumes:
+      - ./pdfs:/work/pdfs:ro
+      - ./output:/work/output
+      - hf-cache:/work/.cache/huggingface
+    # Bound to localhost only: the server runs without a token.
+    ports:
+      - "127.0.0.1:8888:8888"
+    command: notebook
+
+volumes:
+  hf-cache:

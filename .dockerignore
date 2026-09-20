@@ -1,0 +1,17 @@
+venv/
+.git/
+.ipynb_checkpoints/
+.ruff_cache/
+__pycache__/
+*.pyc
+output/
+pdfs/
+Dessertatin/
+*.pdf
+*.docx
+sms_run.ipynb
+sms_executed.ipynb
+sms_pipeline_MASTER.ipynb
+new.py
+install.sh
+requirements.txt.old
