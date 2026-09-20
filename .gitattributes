@@ -1,0 +1,11 @@
+# Shell scripts must keep Unix line endings even when checked out on Windows.
+# Git's autocrlf would otherwise rewrite docker-entrypoint.sh with CRLF, and
+# the container would fail to start with a misleading
+# "exec /usr/local/bin/entrypoint: no such file or directory".
+*.sh            text eol=lf
+Dockerfile      text eol=lf
+docker-entrypoint.sh text eol=lf
+*.yml           text eol=lf
+
+# Notebooks are JSON; keep them from being mangled or diffed as text noise.
+*.ipynb         text eol=lf

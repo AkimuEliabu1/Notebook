@@ -28,7 +28,8 @@ figures and evaluation reports.
 
 ## Running it locally
 
-Docker is the recommended route and is covered below. To run without it:
+Docker is the recommended route on every platform and is covered below. To run
+without it on Linux or macOS:
 
 ```bash
 python3 -m venv venv
@@ -51,11 +52,19 @@ Note that the `tesseract` package on PyPI is an unrelated astronomy library, not
 the OCR engine. The Docker image includes the real one, which is one reason to
 prefer it.
 
+On Windows a local install is possible but awkward: Tesseract must be installed
+separately and added to `PATH`, and several dependencies build from source.
+Use Docker instead.
+
 ## Running with Docker, step by step
 
-Docker is the recommended way to run this. It supplies the Tesseract OCR engine,
-which pip cannot install, and it carries the sentence-transformer weights, so
-the pipeline works offline and gives the same answers on any machine.
+Docker is the recommended way to run this on any platform. It supplies the
+Tesseract OCR engine, which pip cannot install, and it carries the
+sentence-transformer weights, so the pipeline works offline and gives the same
+answers on Linux, macOS and Windows alike.
+
+Steps 1 to 7 below are written for Linux and macOS. Windows users should read
+the Windows notes after step 7 first, then follow the same steps.
 
 ### 1. Check Docker is installed
 
@@ -141,6 +150,61 @@ docker compose up notebook
 Then open <http://127.0.0.1:8888> in a browser. The server is bound to localhost
 only, because it runs without a token; do not publish the port to a network.
 Stop it with Ctrl-C.
+
+### On Windows
+
+The steps above are written for Linux and macOS. On Windows the commands differ
+in three ways, and one of them will stop the container from starting if it is
+missed.
+
+**Install Docker Desktop with the WSL 2 backend.** Download it from
+docker.com, and during setup leave "Use WSL 2 instead of Hyper-V" ticked.
+After installing, open Settings, then Resources, then WSL Integration, and
+enable it for your Linux distribution. Confirm it works:
+
+```powershell
+docker --version
+docker compose version
+```
+
+**Clone with Unix line endings.** This is the step that matters. Git for
+Windows rewrites text files to CRLF by default, which corrupts
+`docker-entrypoint.sh`, and the container then fails with a message that blames
+a missing file rather than the line endings:
+
+```
+exec /usr/local/bin/entrypoint: no such file or directory
+```
+
+The repository ships a `.gitattributes` that prevents this, so a normal clone
+is safe. If you cloned before that file existed, or you see the error above,
+fix it with:
+
+```powershell
+git config --global core.autocrlf input
+git rm --cached -r .
+git reset --hard
+```
+
+**Use PowerShell syntax for paths.** `docker compose` reads the paths from
+`docker-compose.yml`, so the numbered steps work unchanged. Only a direct
+`docker run` needs adapting, because `$PWD` is written differently:
+
+```powershell
+# PowerShell
+docker run --rm -v "${PWD}/pdfs:/work/pdfs:ro" -v "${PWD}/output:/work/output" sms-pipeline
+
+# Command Prompt
+docker run --rm -v "%cd%/pdfs:/work/pdfs:ro" -v "%cd%/output:/work/output" sms-pipeline
+```
+
+Two further notes. Keep the repository inside the WSL 2 filesystem, for example
+under `\\wsl$\Ubuntu\home\you\Notebook`, rather than on the Windows drive at
+`C:\Users\...`. Reading hundreds of PDFs across the Windows-to-Linux file
+share is several times slower. And the `chown` fix in the troubleshooting list
+does not apply on Windows, because Docker Desktop handles file ownership for
+you; if `output/` appears empty after a run, check that the drive is shared
+under Settings, then Resources, then File Sharing.
 
 ### Other commands
 
