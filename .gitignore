@@ -22,7 +22,6 @@ output/**/sms_model.pkl
 
 # --- dissertation ----------------------------------------------------------
 # Unpublished work, including a supervisor's review comments.
-Dessertatin/
 
 # --- local scratch ---------------------------------------------------------
 install.sh
